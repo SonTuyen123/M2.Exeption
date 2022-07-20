@@ -1,13 +1,14 @@
-var score = {
-  checkerror: function (score) {
-    if (score < 0) {
-      try {
-        throw new EvalError('Error occurred');
-      } catch (e) {
-        console.log(e.message);
-      }
-
-    }
+function check(value) {
+  if (["apple", "banana", "carrot"].includes(value) === false) {
+    throw new RangeError('The argument must be an "apple", "banana", or "carrot".')
   }
 }
-console.log(score.checkerror(-3));
+
+try {
+  check("cabbage")
+}
+catch (error) {
+  if (error instanceof RangeError) {
+    console.log(error.message);
+  }
+}
